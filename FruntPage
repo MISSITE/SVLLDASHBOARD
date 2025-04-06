@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Attractive Secure Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #4158d0, #c850c0, #ffcc70);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 450px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease-in-out;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 15px;
+    }
+
+    #iframe2 {
+      display: none;
+    }
+
+    /* Blobs background animation (optional eye candy) */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.5;
+      animation: move 10s ease-in-out infinite;
+    }
+
+    .blob1 {
+      width: 300px;
+      height: 300px;
+      background: #ff6ec4;
+      top: -50px;
+      left: -80px;
+    }
+
+    .blob2 {
+      width: 400px;
+      height: 400px;
+      background: #7873f5;
+      bottom: -80px;
+      right: -100px;
+    }
+
+    @keyframes move {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(30px) translateX(20px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <div class="card">
+    <!-- Login iFrame -->
+    <iframe id="iframe1" srcdoc='
+      <style>
+        body {
+          font-family: Poppins, sans-serif;
+          padding: 30px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: #fefefe;
+        }
+        h2 {
+          color: #333;
+          margin-bottom: 20px;
+        }
+        input {
+          padding: 12px;
+          margin: 10px 0;
+          width: 100%;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          font-size: 16px;
+        }
+        button {
+          padding: 12px 24px;
+          margin-top: 20px;
+          border: none;
+          background: linear-gradient(45deg, #6a11cb, #2575fc);
+          color: white;
+          font-size: 16px;
+          border-radius: 12px;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          width: 100%;
+        }
+        button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+      </style>
+      <h2>🔐 Secure Login</h2>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="parent.login()">Login</button>
+    '></iframe>
+
+    <!-- After Login Page -->
+    <iframe id="iframe2" srcdoc='
+      <style>
+        body {
+          font-family: Poppins, sans-serif;
+          padding: 30px;
+          background: #e0f7fa;
+          text-align: center;
+        }
+        h2 {
+          color: #00796b;
+        }
+        .link-card {
+          background: #ffffff;
+          margin: 10px 0;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+        }
+        .link-card:hover {
+          transform: translateY(-5px);
+        }
+        a {
+          color: #00796b;
+          text-decoration: none;
+          font-weight: bold;
+        }
+      </style>
+
+      <h2>🎉 Welcome to SVLL Panel!</h2>
+      <div class="link-card">
+        <p>🔗 SVLL Dashboard: <a href="https://docs.google.com/spreadsheets/d/17o0CNBRh0Wfh3-kqlLt-zZr8kZJ7EEJxuCC0rmAZLuM/edit?gid=368480054#gid=368480054" target="_blank">GO TO SHEET</a></p>
+      </div>
+      <div class="link-card">
+        <p>🧠 Raipur Code Editor: <a href="https://script.google.com/u/0/home/projects/1Hyd9tp8_2M4dxOnMdqzvzGVhZ7hUuGVUfp5PR9xjSTaoHtYLYzzfVYnd/edit" target="_blank">EDIT SCRIPT</a></p>
+      </div>
+      <div class="link-card">
+        <p>🧠 UPC Code Editor: <a href="https://script.google.com/u/0/home/projects/1vvCg47jpn2QA72nZcMMhBJ-CHLoabpObrw_3Q4dy1lIqGdYG2grZSEJq/edit" target="_blank">EDIT SCRIPT</a></p>
+      </div>
+    '></iframe>
+  </div>
+
+  <script>
+    function login() {
+      const iframe = document.getElementById('iframe1');
+      const user = iframe.contentWindow.document.getElementById('username').value.trim();
+      const pass = iframe.contentWindow.document.getElementById('password').value.trim();
+
+      if (user === 'MIS' && pass === 'MIS@') {
+        document.getElementById('iframe1').style.display = 'none';
+        const iframe2 = document.getElementById('iframe2');
+        iframe2.style.display = 'block';
+        iframe2.classList.add('fade-in');
+      } else {
+        alert('❌ Wrong credentials! Please try again.');
+      }
+    }
+  </script>
+</body>
+</html>
